@@ -1,0 +1,80 @@
+{% load static %}
+<section class="panel summary nice-padding">
+  <h3>Homepage Children</h3>
+  <ul class="home-children-panel">
+    {% for child in children %}
+      <li><a href="/admin/pages/{{ child.id }}/edit/">{{ child.title }}</a></li>
+    {% empty %}
+      <li>No child pages found.</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<style>
+  .w-minimap-item__icon, .w-minimap-item__label {
+    opacity: 1;
+  }
+</style>
+
+<section class="panel summary nice-padding">
+    <h3>Homepage Minimap</h3>
+
+ 
+      <ol class="w-minimap__list" id="minimap-list">
+        <!-- Populated dynamically -->
+      </ol>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      //const pageId = window.location.pathname.match(/pages\/(\d+)/)?.[1];
+      const pageId = 81;
+      if (!pageId) return;
+    
+  fetch(`/admin/pages/${pageId}/panel-data/`)
+  .then(res => res.json())
+  .then(data => {
+    const list = document.getElementById("minimap-list");
+
+    data.forEach(entry => {
+      if (entry.is_streamfield) {
+        entry.value.forEach((block, i) => {
+          const text = block.preview?.trim() || block.type;
+          const icon = block.icon || "placeholder";
+          const href = block.href || "#";
+
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <a href="/admin/pages/${pageId}/edit/${href}" class="w-minimap-item w-minimap-item--h2" aria-current="false">
+              <svg class="icon icon-${icon} w-minimap-item__placeholder" aria-hidden="true">
+                <use href="#icon-${icon}"></use>
+              </svg>
+              <span class="w-minimap-item__label">
+                <span class="w-minimap-item__text">
+                  ${text.length > 50 ? text.slice(0, 50) + "…" : text}
+                </span>
+              </span>
+            </a>
+          `;
+          list.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <a href="/admin/pages/${pageId}/edit/${entry.href}" class="w-minimap-item w-minimap-item--h2" aria-current="false">
+            <svg class="icon icon-form w-minimap-item__placeholder" aria-hidden="true">
+              <use href="#icon-form"></use>
+            </svg>
+            <span class="w-minimap-item__label">
+              <span class="w-minimap-item__text">
+                ${entry.label}
+              </span>
+            </span>
+          </a>
+        `;
+        list.appendChild(li);
+      }
+    });
+  })
+  .catch(err => console.error("Minimap fetch failed:", err));
+});
+</script>

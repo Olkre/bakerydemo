@@ -96,16 +96,16 @@ class BaseStreamBlock(StreamBlock):
     paragraph_block = RichTextBlock(
         icon="pilcrow",
         template="blocks/paragraph_block.html",
-        preview_value=(
-            """
-            <h2>Our bread pledge</h2>
-            <p>As a bakery, <b>breads</b> have <i>always</i> been in our hearts.
-            <a href="https://en.wikipedia.org/wiki/Staple_food">Staple foods</a>
-            are essential for society, and – bread is the tastiest of all.
-            We love to transform batters and doughs into baked goods with a firm
-            dry crust and fluffy center.</p>
-            """
-        ),
+            preview_value=(
+                """
+                <h2>Our bread pledge</h2>
+                <p>As a bakery, <b>breads</b> have <i>always</i> been in our hearts.
+                <a href="https://en.wikipedia.org/wiki/Staple_food">Staple foods</a>
+                are essential for society, and – bread is the tastiest of all.
+                We love to transform batters and doughs into baked goods with a firm
+                dry crust and fluffy center.</p>
+                """
+            ),
         description="A rich text paragraph",
     )
     image_block = CaptionedImageBlock()

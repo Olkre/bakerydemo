@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
+    "admincustomization",
 ]
 
 MIDDLEWARE = [
@@ -231,7 +232,7 @@ if "CSP_DEFAULT_SRC" in os.environ:
     # Only report violations, don't enforce policy
     CSP_REPORT_ONLY = True
 
-    # The “special” source values of 'self', 'unsafe-inline', 'unsafe-eval', and 'none' must be quoted!
+    # The "special" source values of 'self', 'unsafe-inline', 'unsafe-eval', and 'none' must be quoted!
     # e.g.: CSP_DEFAULT_SRC = "'self'" Without quotes they will not work as intended.
 
     CSP_DEFAULT_SRC = os.environ.get("CSP_DEFAULT_SRC").split(",")

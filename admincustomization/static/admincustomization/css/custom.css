@@ -1,0 +1,25 @@
+
+:root {
+  --w-color-primary: #1f5e2e!important;
+  /* Any valid CSS format is supported. */
+  --w-color-primary-200: hsl(253.8 50% 20.4%);
+  /* Set each HSL component separately to change all hues at once. */
+  --w-color-secondary-hue: 180.5;
+  --w-color-secondary-saturation: 100%;
+  --w-color-secondary-lightness: 24.7%;
+  --w-color-primary-hue: 354.3;
+}
+
+
+/* This selector might differ depending on your Wagtail version.
+   Use your browser’s developer tools to inspect the correct element. */
+.sidebar {
+    background-color: #93c06fd6 !important;
+}
+ 
+.sidebar__inner {
+    background-color: #93c06fd6 !important;
+
+  
+}
+

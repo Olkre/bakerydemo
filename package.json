@@ -20,5 +20,8 @@
     "lint:css": "stylelint **/*.css",
     "lint:format": "prettier --check \"**/?(.)*.{css,js,json,yaml,yml}\"",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:format"
+  },
+  "dependencies": {
+    "wagtail": "^0.1.0"
   }
 }

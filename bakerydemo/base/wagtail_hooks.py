@@ -92,3 +92,5 @@ class BakerySnippetViewSetGroup(SnippetViewSetGroup):
 # When using a SnippetViewSetGroup class to group several SnippetViewSet classes together,
 # you only need to register the SnippetViewSetGroup class with Wagtail:
 register_snippet(BakerySnippetViewSetGroup)
+
+
